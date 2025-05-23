@@ -215,7 +215,7 @@ export const projects = [
        "https://i.postimg.cc/DZFQ92hp/imagem-2025-05-23-171605371.png",
      tags: ["#React Js",  "#Node Js", ],
      category: "web app",
-     github: "https://github.com/rishavchanda/Podstream",
+     github: "https://github.com/dkzzyn/conversor",
      webapp: "https://conversor-woad-psi.vercel.app",
      member: [
    /*     {

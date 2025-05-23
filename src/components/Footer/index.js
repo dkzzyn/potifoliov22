@@ -101,7 +101,7 @@ function Footer() {
           <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
-          &copy; 2025 Diogo Silva. All rights reserved.
+          &copy; 2025 Diogo Silva. Direitos reservados.
         </Copyright>
       </FooterWrapper>
     </FooterContainer>
