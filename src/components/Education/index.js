@@ -78,7 +78,7 @@ const Experiences = ({ theme }) => {
   return (
     <Container id="experiences">
       <Wrapper>
-        <Title>Experiências</Title>
+        <Title>Educação</Title>
         <Desc>
           Cada experiência profissional tem contribuído para minha evolução pessoal e técnica.
         </Desc>
