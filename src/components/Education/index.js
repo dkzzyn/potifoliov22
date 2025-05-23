@@ -1,13 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
-import Timeline from '@mui/lab/Timeline'
-import TimelineItem from '@mui/lab/TimelineItem'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import TimelineConnector from '@mui/lab/TimelineConnector'
-import TimelineContent from '@mui/lab/TimelineContent'
-import TimelineDot from '@mui/lab/TimelineDot'
-import { experiences } from '../../data/constants'
-import ExperienceCard from '../Cards/ExperienceCard'
+import styled, { useTheme } from 'styled-components'
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import { education } from '../../data/constants';
+import EducationCard from '../Cards/EducationCard';
 
 const Container = styled.div`
   display: flex;
@@ -17,10 +17,11 @@ const Container = styled.div`
   z-index: 1;
   align-items: center;
   padding: 0px 0px 60px 0px;
+  background-color: ${({ theme }) => theme.background};
   @media (max-width: 960px) {
     padding: 0px;
   }
-`
+`;
 
 const Wrapper = styled.div`
   position: relative;
@@ -32,10 +33,7 @@ const Wrapper = styled.div`
   max-width: 1350px;
   padding: 40px 0px 0px 0px;
   gap: 12px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
-`
+`;
 
 const Title = styled.div`
   font-size: 42px;
@@ -47,7 +45,7 @@ const Title = styled.div`
     margin-top: 12px;
     font-size: 32px;
   }
-`
+`;
 
 const Desc = styled.div`
   font-size: 18px;
@@ -58,7 +56,7 @@ const Desc = styled.div`
     margin-top: 12px;
     font-size: 16px;
   }
-`
+`;
 
 const TimelineSection = styled.div`
   width: 100%;
@@ -69,30 +67,34 @@ const TimelineSection = styled.div`
   align-items: center;
   justify-content: center;
   gap: 12px;
-  @media (max-width: 660px) {
-    align-items: end;
-  }
-`
+`;
 
-const Experiences = ({ theme }) => {
+const Index = () => {
+  const theme = useTheme();
+
   return (
-    <Container id="experiences">
+    <Container id="education">
       <Wrapper>
         <Title>Educação</Title>
         <Desc>
-          Cada experiência profissional tem contribuído para minha evolução pessoal e técnica.
+          Minha educação tem sido uma jornada de autodescoberta e crescimento. Meus detalhes educacionais são os seguintes.
         </Desc>
         <TimelineSection>
           <Timeline>
-            {experiences.map((exp, index) => (
+            {education.map((item, index) => (
               <TimelineItem key={index}>
                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <ExperienceCard experience={exp} />
+                  <EducationCard education={item} />
                 </TimelineContent>
                 <TimelineSeparator>
-                  <TimelineDot variant="outlined" color="primary" />
-                  {index !== experiences.length - 1 && (
-                    <TimelineConnector style={{ background: theme.primary }} />
+                  <TimelineDot
+                    variant="outlined"
+                    sx={{ borderColor: theme.text_primary }}
+                  />
+                  {index !== education.length - 1 && (
+                    <TimelineConnector
+                      sx={{ backgroundColor: theme.text_primary }}
+                    />
                   )}
                 </TimelineSeparator>
               </TimelineItem>
@@ -101,7 +103,7 @@ const Experiences = ({ theme }) => {
         </TimelineSection>
       </Wrapper>
     </Container>
-  )
+  );
 }
 
-export default Experiences
+export default Index;
