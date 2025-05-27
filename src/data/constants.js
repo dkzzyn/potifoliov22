@@ -11,7 +11,7 @@ export const Bio = {
   github: "https://github.com/dkzzyn",
   resume:
     "https://drive.google.com/file/d/1lSj_UtnGvbSvTPcHjMt-O--U0lw1cFY8/view?usp=drive_link",
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/diogosilvva/",
   twitter: "https://twitter.com/RishavChanda",
   insta: "https://www.instagram.com/_diogo.frr/?igsh=MWthbzdtdWdscXNxOA%3D%3D",
   facebook: "",
