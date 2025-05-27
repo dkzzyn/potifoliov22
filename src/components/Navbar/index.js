@@ -4,11 +4,13 @@ import {
   GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileLink
 } from './NavbarStyledComponent'
 import { DiCssdeck } from 'react-icons/di'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaGit, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { Bio } from '../../data/constants'
 import { useTheme } from 'styled-components'
 import { useThemeContext } from '../../utils/ThemeContext'
-import { FaSun, FaMoon } from 'react-icons/fa' // ÍCONES
+import { FaSun, FaMoon } from 'react-icons/fa' 
+import { scrollToSection } from '../../utils/scrollToSection';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -29,16 +31,17 @@ const Navbar = () => {
           <FaBars onClick={() => setIsOpen(!isOpen)} />
         </MobileIcon>
         <NavItems>
-          <NavLink href="#about">Sobre</NavLink>
+          <NavLink href="#about" >Sobre</NavLink>
           <NavLink href='#skills'>Habilidades</NavLink>
           <NavLink href='#experience'>Experiência</NavLink>
           <NavLink href='#projects'>Projetos</NavLink>
           <NavLink href='#education'>Educação</NavLink>
         </NavItems>
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank">Perfil GitHub</GitHubButton>
+          <GitHubButton href={Bio.github} target="_blank"><FaGithub/></GitHubButton>
+          <GitHubButton href={Bio.linkedin} target="_blank" style={{marginLeft: '10px'}}><FaLinkedin/></GitHubButton>
           <GitHubButton onClick={toggleTheme} style={{ marginLeft: '10px' }}>
-            {isDark ? <><FaSun style={{ marginRight: 6 }} /> Modo Claro</> : <><FaMoon style={{ marginRight: 6 }} /> Modo Escuro</>}
+            {isDark ? <><FaSun/> </> : <><FaMoon/> </>}
           </GitHubButton>
         </ButtonContainer>
 

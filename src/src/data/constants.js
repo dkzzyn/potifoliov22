@@ -10,7 +10,7 @@ export const Bio = {
     "sou um indivíduo motivado e versátil, sempre ansioso para assumir novos desafios. Com paixão por aprender, dedico-me a entregar resultados de alta qualidade. Com uma atitude positiva e uma mentalidade de crescimento, estou pronto para fazer uma contribuição significativa e alcançar grandes coisas.",
   github: "https://github.com/dkzzyn",
   resume:
-    "https://drive.google.com/file/d/1lSj_UtnGvbSvTPcHjMt-O--U0lw1cFY8/view?usp=drive_link",
+    "https://drive.google.com/file/d/1lSj_UtnGvbSvTPcHjMt-O--U0lw1cFY8/view?usp=sharing",
   linkedin: "",
   twitter: "https://twitter.com/RishavChanda",
   insta: "https://www.instagram.com/_diogo.frr/?igsh=MWthbzdtdWdscXNxOA%3D%3D",
@@ -172,17 +172,8 @@ export const experiences = [
 ];
 
 export const education = [
-   {
-    id: 0,
-    img: "alura.png",
-    school: "Estacio",
-    date: "2025 - Sep 2027",
-    grade: "8.71 CGPA",
-    desc: "O curso de React Native da Alura tem como objetivo capacitar os alunos para o desenvolvimento de aplicativos móveis nativos utilizando JavaScript e a biblioteca React Native, permitindo criar apps para Android e iOS de forma eficiente.",
-    degree: "React Native: explorando as ferramentas",
-  },
   {
-    id: 1,
+    id: 0,
     img: "alura.png",
     school: "Alura",
     date: "Oct 2021 - Sep 2025",
@@ -191,7 +182,7 @@ export const education = [
     degree: "React Native: explorando as ferramentas",
   },
   {
-    id: 2,
+    id: 1,
     img: "alura.png",
     school: "Alura",
     date: "Apr 2019 - Apr 2025",
@@ -200,7 +191,7 @@ export const education = [
     degree: "React.js",
   },
   {
-      "id": 3,
+      "id": 2,
       "img": "edukaio.jfif",
       "school": "intermediate english, Edukaio",
       "date": "Apr 2017 - Apr 2019",
@@ -213,45 +204,118 @@ export const education = [
 ];
 
 export const projects = [
-
-   {
-     id: 0,
-     title: "em breve novidades",
-     date: "Abril 2025",
-     description:
-       "Developed a full-stack web application that allows users to search for, play, and pause their favorite podcasts on demand and create podcasts. Implemented user authentication using Google Auth and Jwt Auth, made responsive user interface with React JS that provides users with a seamless experience across all devices. Practiced agile methodologies to optimize team efficiency and communication.",
-     image:
-       "https://i.postimg.cc/DZFQ92hp/imagem-2025-05-23-171605371.png",
-     tags: ["#React Js",  "#Node Js", ],
-     category: "web app",
-     github: "https://github.com/dkzzyn/conversor",
-     webapp: "https://conversor-woad-psi.vercel.app",
-     member: [
-   /*     {
-         name: "",
-         img: "",
-         linkedin: "",
-         github: "",
-       },
- */
-    
-     ],
-   },
-  
   {
-    id: 1,
-    title: "Sistema de estoque",
-    date: "Maio 2025 - Em processo",
+    id: 9,
+    title: "em preparoem breve novidades",
+    date: "Jun 2023 - Jul 2023",
     description:
-      "Sistema de controle de estoque em desenvolvimento, focado na gestão eficiente de entradas, saídas e transferências de itens entre polos. O projeto busca facilitar o cadastro de produtos,   rastreamento de movimentações e geração de relatórios em tempo real, oferecendo uma interface intuitiva para técnicos e administradores.",
+      "",
     image:
-      "https://i.postimg.cc/MpMvpyTh/imagem-2025-05-23-170546845.png",
-    tags: [ "#React","#Routes", "#CSS",],
+      "",
+    tags: [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ],
     category: "web app",
-    github: "https://github.com/dkzzyn/stock-system.git",
-    webapp: "https://stock-system-q97tccx98-dkzynns-projects.vercel.app",
+    github: "",
+    webapp: "",
   },
-  
+  // {
+  //   id: 0,
+  //   title: "em breve novidades",
+  //   date: "Apr 2023 - May 2023",
+  //   description:
+  //     "Developed a full-stack web application that allows users to search for, play, and pause their favorite podcasts on demand and create podcasts. Implemented user authentication using Google Auth and Jwt Auth, made responsive user interface with React JS that provides users with a seamless experience across all devices. Practiced agile methodologies to optimize team efficiency and communication.",
+  //   image:
+  //     "https://user-images.githubusercontent.com/64485885/234602896-a1bd8bcc-b72b-4821-83d6-8ad885bf435e.png",
+  //   tags: ["React Js", "MongoDb", "Node Js", "Express Js", "Redux"],
+  //   category: "web app",
+  //   github: "https://github.com/rishavchanda/Podstream",
+  //   webapp: "https://podstream.netlify.app/",
+  //   member: [
+  //     {
+  //       name: "Rishav Chanda",
+  //       img: "https://avatars.githubusercontent.com/u/64485885?v=4",
+  //       linkedin: "https://www.linkedin.com/in/rishav-chanda-b89a791b3/",
+  //       github: "https://github.com/rishavchanda/",
+  //     },
+  //     {
+  //       name: "Upasana Chaudhuri",
+  //       img: "https://avatars.githubusercontent.com/u/100614635?v=4",
+  //       linkedin: "https://www.linkedin.com/in/upasana-chaudhuri-2a2bb5231/",
+  //       github: "https://github.com/upasana0710",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 1,
+  //   title: "Vexa",
+  //   date: "Oct 2022 - Present",
+  //   description:
+  //     "Designed and developed the Vexa project, a project management app that helps users and teams stay organized and on track. Implemented key features such as task tracking, team collaboration, and time tracking to improve productivity and project outcomes and also invite team/project members. The plan is to add a community of users where they can find developers and other team members and chat system implementation.",
+  //   image:
+  //     "https://user-images.githubusercontent.com/64485885/234916413-96296f13-fe4b-4cc4-b215-e72bd7c27928.png",
+  //   tags: [
+  //     "React Js",
+  //     "MongoDb",
+  //     "Node Js",
+  //     "Express Js",
+  //     "Redux",
+  //     "NodeMailer",
+  //   ],
+  //   category: "web app",
+  //   github: "https://github.com/rishavchanda/Project-Management-App",
+  //   webapp: "https://vexa-app.netlify.app/",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Brain Tumor Detection",
+  //   date: "Jan 2023 - Mar 2023",
+  //   description:
+  //     "Preprocessed and augmented the dataset to improve model accuracy, trained the model, created API using model and Python, and used React web app for the project's front end. Achievements: Achieved an accuracy of 99.2% to accurately detect brain tumors from medical images.",
+  //   image:
+  //     "https://github.com/rishavchanda/Brain-Tumor-Detection/raw/main/Readme_resource/Image2.png",
+  //   tags: ["Python", "Keras", "TensorFlow", "VGG16", "Pickle", "React"],
+  //   category: "machine learning",
+  //   github: "https://github.com/rishavchanda/Brain-Tumor-Detection",
+  //   webapp: "https://brain-tumor.netlify.app/",
+  //   member: [
+  //     {
+  //       name: "Rishav Chanda",
+  //       img: "https://avatars.githubusercontent.com/u/64485885?v=4",
+  //       linkedin: "https://www.linkedin.com/in/rishav-chanda-b89a791b3/",
+  //       github: "https://github.com/rishavchanda/",
+  //     },
+  //     {
+  //       name: "Upasana Chaudhuri",
+  //       img: "https://avatars.githubusercontent.com/u/100614635?v=4",
+  //       linkedin: "https://www.linkedin.com/in/upasana-chaudhuri-2a2bb5231/",
+  //       github: "https://github.com/upasana0710",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 3,
+  //   title: "Buckoid",
+  //   date: "Dec 2021 - Apr 2022",
+  //   description:
+  //     "App Is Currently In Playstore 100+ Downloads. This Project proposes an “Expense Tracking App”. Keep track of your personal expenses and compare them to your monthly income with the budget planner. It has Google Drive Cloud API for Backup of User Room Database. Made with Kotlin in MVVM Architecture & Live Data.",
+  //   image:
+  //     "https://camo.githubusercontent.com/fbf405040ae86b5d4a40f24e4ac034982cb8c0e2d850560ba64527997b258be8/68747470733a2f2f666972656261736573746f726167652e676f6f676c65617069732e636f6d2f76302f622f6c6f67696e2d65613565322e61707073706f742e636f6d2f6f2f4255434b4f49442532302831292e706e673f616c743d6d6564696126746f6b656e3d32653735376235372d323964372d346263612d613562322d653164346538313432373435",
+  //   tags: ["Kotlin", "MVVM", "Room Database", "Google Drive Cloud API"],
+  //   category: "android app",
+  //   github: "https://github.com/rishavchanda/Buckoid-Android-App",
+  //   webapp: "https://play.google.com/store/apps/details?id=com.rishav.buckoid",
+  // },
 ];
 
 export const TimeLineData = [
