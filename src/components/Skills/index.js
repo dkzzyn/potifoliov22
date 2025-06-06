@@ -1,8 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { skills } from '../../data/constants'
+import React, { useRef } from 'react';
+import styled from 'styled-components';
+import { skills } from '../../data/constants';
+import { motion, useInView } from 'framer-motion';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,7 +61,7 @@ const Skill = styled.div`
   width: 100%;
   max-width: 500px;
   background: ${({ theme }) => theme.card};
-  border: 0.1px solid ${({ theme }) => theme.primary}; /* Azul aqui */
+  border: 0.1px solid ${({ theme }) => theme.primary};
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
   border-radius: 16px;
   padding: 18px 36px;
@@ -93,8 +94,8 @@ const SkillList = styled.div`
 const SkillItem = styled.div`
   font-size: 16px;
   font-weight: 400;
-  color: ${({ theme }) => theme.text_primary + 80}; /* Mantendo o tom claro */
-  border: 1px solid ${({ theme }) => theme.text_primary + 80}; /* Mantendo o tom claro */
+  color: ${({ theme }) => theme.text_primary + '80'};
+  border: 1px solid ${({ theme }) => theme.text_primary + '80'};
   border-radius: 12px;
   padding: 12px 16px;
   display: flex;
@@ -117,21 +118,30 @@ const SkillImage = styled.img`
 `;
 
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
   return (
-    <Container id="skills">
+    <Container
+      ref={ref}
+      initial={{ opacity: 0, y: -50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+      transition={{ duration: 0.9, ease: 'easeOut' }}
+      id="skills"
+    >
       <Wrapper>
         <Title>Habilidades</Title>
         <Desc>
-        Aqui estão algumas das minhas habilidades nas quais venho trabalhando nos últimos 1 ano.
+          Aqui estão algumas das minhas habilidades nas quais venho trabalhando nos últimos 1 ano.
         </Desc>
         <SkillsContainer>
           {skills.map((skill) => (
-            <Skill>
+            <Skill key={skill.title}>
               <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
                 {skill.skills.map((item) => (
                   <SkillItem key={item.name}>
-                    <SkillImage src={item.image} />
+                    <SkillImage src={item.image} alt={item.name} />
                     {item.name}
                   </SkillItem>
                 ))}
@@ -142,6 +152,6 @@ const Skills = () => {
       </Wrapper>
     </Container>
   );
-}
+};
 
 export default Skills;

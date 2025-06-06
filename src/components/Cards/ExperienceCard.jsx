@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useRef } from 'react';
+import styled from 'styled-components';
+import { motion, useInView } from 'framer-motion';
 
 const Document = styled.img`
     display: none;
@@ -11,18 +12,18 @@ const Document = styled.img`
         cursor: pointer;
         opacity: 0.8;
     }
-`
+`;
 
 const Description = styled.div`
     width: 100%;
     font-size: 15px;
     font-weight: 400;
-    color: ${({ theme }) => theme.text_primary + 99};
+    color: ${({ theme }) => theme.text_primary + '99'};
     margin-bottom: 10px;
     @media only screen and (max-width: 768px) {
         font-size: 12px;
     }
-`
+`;
 
 const Span = styled.span`
     overflow: hidden;
@@ -31,9 +32,9 @@ const Span = styled.span`
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-`
+`;
 
-const Card = styled.div`
+const Card = styled(motion.div)`
     width: 650px;
     border-radius: 10px;
     border: 0.1px solid ${({ theme }) => theme.primary};
@@ -67,13 +68,13 @@ const Card = styled.div`
         overflow: visible;
         -webkit-line-clamp: unset;
     }
-`
+`;
 
 const Top = styled.div`
     width: 100%;
     display: flex;
     gap: 12px;
-`
+`;
 
 const Image = styled.img`
     height: 50px;
@@ -83,68 +84,76 @@ const Image = styled.img`
     @media only screen and (max-width: 768px) {
         height: 40px;
     }
-`
+`;
 
 const Body = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-`
+`;
 
 const Role = styled.div`
     font-size: 18px;
     font-weight: 600;
-    color: ${({ theme }) => theme.text_primary + 99};
+    color: ${({ theme }) => theme.text_primary + '99'};
     @media only screen and (max-width: 768px) {
         font-size: 14px;
     }
-`
+`;
 
 const Company = styled.div`
     font-size: 14px;
     font-weight: 500;
-    color: ${({ theme }) => theme.text_secondary + 99};
+    color: ${({ theme }) => theme.text_secondary + '99'};
     @media only screen and (max-width: 768px) {
         font-size: 12px;
     }
-`
+`;
 
 const Date = styled.div`
     font-size: 12px;
     font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 80};
+    color: ${({ theme }) => theme.text_secondary + '80'};
     @media only screen and (max-width: 768px) {
         font-size: 10px;
     }
-`
+`;
 
 const Skills = styled.div`
     width: 100%;
     display: flex;
     gap: 12px;
     margin-top: -10px;
-`
+`;
 
 const ItemWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-`
+`;
 
 const Skill = styled.div`
     font-size: 15px;
     font-weight: 400;
-    color: ${({ theme }) => theme.text_primary + 99};
+    color: ${({ theme }) => theme.text_primary + '99'};
     @media only screen and (max-width: 768px) {
         font-size: 12px;
     }
-`
+`;
 
 const ExperienceCard = ({ experience }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: '-100px' });
+
     return (
-        <Card>
+        <Card
+            ref={ref}
+            initial={{ opacity: 0, x: 100 }}  // Começa deslocado 100px para a direita e invisível
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }} // Ao entrar, move para x=0 e aparece
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
             <Top>
-                <Image src={experience.img} />
+                <Image src={experience.img} alt={experience.company} />
                 <Body>
                     <Role>{experience.role}</Role>
                     <Company>{experience.company}</Company>
@@ -169,11 +178,11 @@ const ExperienceCard = ({ experience }) => {
             </Description>
             {experience.doc && (
                 <a href={experience.doc} target="_blank" rel="noopener noreferrer">
-                    <Document src={experience.doc} />
+                    <Document src={experience.doc} alt="Document" />
                 </a>
             )}
         </Card>
-    )
-}
+    );
+};
 
-export default ExperienceCard
+export default ExperienceCard;

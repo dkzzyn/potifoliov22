@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react'
-import styled from 'styled-components'
-import emailjs from '@emailjs/browser'
-import { Snackbar } from '@mui/material'
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import emailjs from '@emailjs/browser';
+import { Snackbar } from '@mui/material';
 import { lighten } from 'polished';
-
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
   @media (max-width: 960px) {
     padding: 0px;
   }
-`
+`;
 
 const Wrapper = styled.div`
   position: relative;
@@ -30,9 +30,9 @@ const Wrapper = styled.div`
   @media (max-width: 960px) {
     flex-direction: column;
   }
-`
+`;
 
-const Title = styled.div`
+const Title = styled(motion.div)`
   font-size: 42px;
   text-align: center;
   font-weight: 600;
@@ -42,9 +42,9 @@ const Title = styled.div`
     margin-top: 12px;
     font-size: 32px;
   }
-`
+`;
 
-const Desc = styled.div`
+const Desc = styled(motion.div)`
   font-size: 18px;
   text-align: center;
   max-width: 600px;
@@ -53,9 +53,9 @@ const Desc = styled.div`
     margin-top: 12px;
     font-size: 16px;
   }
-`
+`;
 
-const ContactForm = styled.form`
+const ContactForm = styled(motion.form)`
   width: 95%;
   max-width: 600px;
   display: flex;
@@ -66,14 +66,14 @@ const ContactForm = styled.form`
   box-shadow: ${({ theme }) => theme.shadow_form};
   margin-top: 28px;
   gap: 12px;
-`
+`;
 
 const ContactTitle = styled.div`
   font-size: 24px;
   margin-bottom: 6px;
   font-weight: 600;
   color: ${({ theme }) => theme.text_primary};
-`
+`;
 
 const ContactInput = styled.input`
   flex: 1;
@@ -87,7 +87,7 @@ const ContactInput = styled.input`
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
   }
-`
+`;
 
 const ContactInputMessage = styled.textarea`
   flex: 1;
@@ -101,7 +101,7 @@ const ContactInputMessage = styled.textarea`
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
   }
-`
+`;
 
 const ContactButton = styled.input`
   width: 100%;
@@ -144,26 +144,50 @@ const ContactButton = styled.input`
 `;
 
 const Contact = () => {
-  const [open, setOpen] = useState(false)
-  const form = useRef()
+  const [open, setOpen] = useState(false);
+  const form = useRef();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi')
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        'service_tox7kqs',
+        'template_nv7k7mj',
+        form.current,
+        'SybVGsYS52j2TfLbi'
+      )
       .then(() => {
-        setOpen(true)
-        form.current.reset()
+        setOpen(true);
+        form.current.reset();
       }, (error) => {
-        console.log(error.text)
-      })
-  }
+        console.log(error.text);
+      });
+  };
 
   return (
     <Container>
       <Wrapper>
-        <Title>Contato</Title>
-        <Desc>Sinta-se à vontade para entrar em contato comigo caso tenha alguma dúvida ou oportunidade!</Desc>
-        <ContactForm ref={form} onSubmit={handleSubmit}>
+        <Title
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          Contato
+        </Title>
+        <Desc
+          initial={{ y: -10, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          Sinta-se à vontade para entrar em contato comigo caso tenha alguma dúvida ou oportunidade!
+        </Desc>
+        <ContactForm
+          ref={form}
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+        >
           <ContactTitle>Email 🚀</ContactTitle>
           <ContactInput placeholder="Your Email" name="from_email" />
           <ContactInput placeholder="Your Name" name="from_name" />
@@ -175,11 +199,11 @@ const Contact = () => {
           open={open}
           autoHideDuration={6000}
           onClose={() => setOpen(false)}
-          message="Email sent successfully!"
+          message="Email enviado com sucesso!"
         />
       </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

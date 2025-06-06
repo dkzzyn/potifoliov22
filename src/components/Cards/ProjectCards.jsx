@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useRef } from 'react';
+import styled from 'styled-components';
+import { motion, useInView } from 'framer-motion';
 
 const Button = styled.button`
     display: none;
@@ -13,9 +14,9 @@ const Button = styled.button`
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.8s ease-in-out;
-`
+`;
 
-const Card = styled.div`
+const Card = styled(motion.div)`
     width: 330px;
     height: 490px;
     background-color: ${({ theme }) => theme.card};
@@ -38,7 +39,7 @@ const Card = styled.div`
     &:hover ${Button} {
         display: block;
     }
-`
+`;
 
 const Image = styled.img`
     width: 100%;
@@ -46,7 +47,7 @@ const Image = styled.img`
     background-color: ${({ theme }) => theme.white};
     border-radius: 10px;
     box-shadow: ${({ theme }) => theme.shadow_image};
-`
+`;
 
 const Tags = styled.div`
     width: 100%;
@@ -55,16 +56,16 @@ const Tags = styled.div`
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 4px;
-`
+`;
 
 const Tag = styled.span`
     font-size: 12px;
     font-weight: 400;
     color: ${({ theme }) => theme.primary};
-    background-color: ${({ theme }) => theme.primary + 15};
+    background-color: ${({ theme }) => theme.primary + '15'};
     padding: 2px 8px;
     border-radius: 10px;
-`
+`;
 
 const Details = styled.div`
     width: 100%;
@@ -72,7 +73,7 @@ const Details = styled.div`
     flex-direction: column;
     gap: 0px;
     padding: 0px 2px;
-`
+`;
 
 const Title = styled.div`
     font-size: 20px;
@@ -84,21 +85,21 @@ const Title = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-`
+`;
 
 const Date = styled.div`
     font-size: 12px;
     margin-left: 2px;
     font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 80};
-    @media only screen and (max-width: 768px){
+    color: ${({ theme }) => theme.text_secondary + '80'};
+    @media only screen and (max-width: 768px) {
         font-size: 10px;
     }
-`
+`;
 
 const Description = styled.div`
     font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 99};
+    color: ${({ theme }) => theme.text_secondary + '99'};
     overflow: hidden;
     margin-top: 8px;
     display: -webkit-box;
@@ -106,13 +107,13 @@ const Description = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-`
+`;
 
 const Members = styled.div`
     display: flex;
     align-items: center;
     padding-left: 10px;
-`
+`;
 
 const Avatar = styled.img`
     width: 38px;
@@ -122,12 +123,21 @@ const Avatar = styled.img`
     background-color: ${({ theme }) => theme.white};
     box-shadow: ${({ theme }) => theme.shadow_avatar};
     border: 3px solid ${({ theme }) => theme.card};
-`
+`;
 
 const ProjectCards = ({ project, setOpenModal }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: '-100px' });
+
     return (
-        <Card onClick={() => setOpenModal({ state: true, project })}>
-            <Image src={project.image} />
+        <Card
+            ref={ref}
+            initial={{ opacity: 0, x: -100 }}  // começa invisível e à esquerda
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }} // anima para posição normal
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            onClick={() => setOpenModal({ state: true, project })}
+        >
+            <Image src={project.image} alt={project.title} />
             <Tags>
                 {project.tags?.map((tag, index) => (
                     <Tag key={index}>{tag}</Tag>
@@ -140,12 +150,12 @@ const ProjectCards = ({ project, setOpenModal }) => {
             </Details>
             <Members>
                 {project.member?.map((member, index) => (
-                    <Avatar key={index} src={member.img} />
+                    <Avatar key={index} src={member.img} alt={`Membro ${index + 1}`} />
                 ))}
             </Members>
             {/* <Button>View Project</Button> */}
         </Card>
-    )
-}
+    );
+};
 
-export default ProjectCards
+export default ProjectCards;
